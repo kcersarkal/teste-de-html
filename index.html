@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mix Du Mix — Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --laranja: #F47920;
+    --laranja-escuro: #d96510;
+    --laranja-claro: #ff9a45;
+    --preto: #0d0d0d;
+    --cinza-escuro: #161616;
+    --cinza: #222;
+    --branco: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--preto);
+    color: var(--branco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── HEADER ── */
+  .profile-header {
+    width: 100%;
+    background: var(--cinza-escuro);
+    padding: 44px 24px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-bottom: 2px solid rgba(244,121,32,0.2);
+    overflow: hidden;
+  }
+  .profile-header::before {
+    content: '';
+    position: absolute;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(244,121,32,0.22) 0%, transparent 70%);
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .header-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+  }
+
+  /* Logo - moldura "squircle" (mostra a imagem inteira, sacolinhas incluídas) */
+  .logo-frame {
+    position: relative; z-index: 1;
+    width: 168px; height: 168px;
+    border-radius: 36px;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px rgba(244,121,32,0.45), 0 14px 30px rgba(244,121,32,0.45), 0 4px 12px rgba(0,0,0,0.5);
+    animation: popIn 0.65s cubic-bezier(0.34,1.56,0.64,1) both, float 4s ease-in-out infinite;
+  }
+  .logo-float {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.65); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .profile-name {
+    position: relative; z-index: 1;
+    margin-top: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.55rem;
+    color: var(--branco);
+    letter-spacing: -0.01em;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+  .profile-handle {
+    position: relative; z-index: 1;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.38);
+    margin-top: 3px;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+  .profile-bio {
+    position: relative; z-index: 1;
+    margin-top: 14px;
+    font-size: 0.87rem;
+    color: rgba(255,255,255,0.58);
+    text-align: center;
+    line-height: 1.65;
+    max-width: 310px;
+    animation: fadeUp 0.5s 0.5s ease both;
+  }
+  .live-badge {
+    position: relative; z-index: 1;
+    margin-top: 14px;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(244,121,32,0.13);
+    border: 1px solid rgba(244,121,32,0.38);
+    border-radius: 99px;
+    padding: 5px 15px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--laranja-claro);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    animation: fadeUp 0.5s 0.6s ease both;
+  }
+  .pulse-dot {
+    width: 7px; height: 7px;
+    background: #4cd964;
+    border-radius: 50%;
+    animation: pulseDot 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulseDot {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.55; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── LINKS ── */
+  .links-section {
+    width: 100%;
+    padding: 30px 18px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-label {
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    margin-bottom: 13px;
+    padding-left: 4px;
+  }
+
+  /* Telegram */
+  .btn-telegram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    background: linear-gradient(135deg, #0088cc, #006aaa);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 0.97rem;
+    padding: 17px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 22px rgba(0,136,204,0.32);
+    transition: all 0.2s;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-telegram::before {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 55%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    animation: shimmer 2.8s ease infinite;
+  }
+  .btn-telegram:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,136,204,0.5); }
+  @keyframes shimmer {
+    0% { left: -100%; }
+    60%,100% { left: 150%; }
+  }
+
+  .btn-telegram-rosa {
+    background: linear-gradient(135deg, #e0397c, #ad1457);
+    box-shadow: 0 4px 22px rgba(224,57,124,0.32);
+  }
+  .btn-telegram-rosa:hover {
+    box-shadow: 0 8px 30px rgba(224,57,124,0.5);
+  }
+
+  /* Divisor */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 26px 0 16px;
+    color: rgba(255,255,255,0.22);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.09);
+  }
+
+  /* Produto */
+  .product-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--cinza-escuro);
+    border: 1.5px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    text-decoration: none;
+    color: var(--branco);
+    padding: 12px 16px 12px 12px;
+    margin-bottom: 12px;
+    transition: all 0.22s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .product-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(244,121,32,0.09), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .product-btn:hover {
+    border-color: rgba(244,121,32,0.5);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 30px rgba(244,121,32,0.22);
+  }
+  .product-btn:hover::after { opacity: 1; }
+  .product-btn:active { transform: scale(0.98); }
+  .product-thumb {
+    width: 72px; height: 72px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--cinza);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    position: relative; z-index: 1;
+  }
+  .product-tag {
+    font-size: 0.64rem;
+    font-weight: 800;
+    color: var(--laranja-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .product-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.91rem;
+    color: var(--branco);
+    line-height: 1.35;
+  }
+  .product-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--laranja);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    padding: 5px 11px;
+    border-radius: 99px;
+    align-self: flex-start;
+  }
+  .arrow-icon { transition: transform 0.2s; }
+  .product-btn:hover .arrow-icon { transform: translateX(3px); }
+
+  /* Footer */
+  .bio-footer {
+    width: 100%;
+    padding: 36px 20px 0;
+    text-align: center;
+    color: rgba(255,255,255,0.18);
+    font-size: 0.7rem;
+    line-height: 1.9;
+  }
+  .bio-footer a { color: var(--laranja-claro); text-decoration: none; }
+
+  /* ── PRODUTOS INFO ── */
+  .produtos-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding: 0 4px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 700;
+  }
+
+  /* ── PLACEHOLDER THUMB ── */
+  .placeholder-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #F47920, #d96510);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* ── PAGINAÇÃO ── */
+  .paginacao {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 2px;
+  }
+  .paginacao.visivel { display: flex; }
+  .btn-pag {
+    background: var(--cinza-escuro);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    color: var(--branco);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-pag:hover:not(:disabled) {
+    border-color: rgba(244,121,32,0.5);
+    background: rgba(244,121,32,0.1);
+    color: var(--laranja-claro);
+  }
+  .btn-pag:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  .pag-paginas {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .pag-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255,255,255,0.1);
+    background: var(--cinza-escuro);
+    color: rgba(255,255,255,0.5);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .pag-num:hover { border-color: rgba(244,121,32,0.4); color: var(--laranja-claro); }
+  .pag-num.ativa {
+    background: var(--laranja);
+    border-color: var(--laranja);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(244,121,32,0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="profile-header">
+    <div class="header-dots"></div>
+    <div class="logo-frame">
+      <img src="data:image/webp;base64,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" alt="Mix Du Mix" class="logo-float">
+    </div>
+    <div class="profile-name">Mix Du Mix</div>
+    <div class="profile-handle">@mix.dumix</div>
+    <div class="profile-bio">As melhores ofertas de Shopee, Mercado Livre, Amazon e AliExpress, todo dia por aqui 🔥</div>
+    <div class="live-badge"><span class="pulse-dot"></span>Ofertas ao vivo</div>
+  </div>
+
+  <div class="links-section">
+
+    <div class="section-label">🔥 Conheça nossos grupos de ofertas</div>
+    <a href="https://t.me/VitrineMixDuMix" target="_blank" rel="noopener" class="btn-telegram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M21.944 2.506a1.5 1.5 0 0 0-1.53-.228L2.43 9.154a1.5 1.5 0 0 0 .09 2.79l4.193 1.398 1.638 5.453a1 1 0 0 0 1.7.393l2.3-2.494 4.507 3.378a1.5 1.5 0 0 0 2.363-1.005L22.49 4.02a1.5 1.5 0 0 0-.546-1.514zM9.373 14.388l-.7 2.928-.972-3.234 7.957-6.173-7.285 6.479zm1.87 3.234.49-2.09 1.085.814-1.575 1.276zm6.48.943-5.51-4.132 8.97-7.977-3.46 12.109z" fill="white"/>
+      </svg>
+      Mix Du Mix Ofertas — Entrar Grátis
+    </a>
+
+    <a href="https://t.me/MixModaFeminina" target="_blank" rel="noopener" class="btn-telegram btn-telegram-rosa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M21.944 2.506a1.5 1.5 0 0 0-1.53-.228L2.43 9.154a1.5 1.5 0 0 0 .09 2.79l4.193 1.398 1.638 5.453a1 1 0 0 0 1.7.393l2.3-2.494 4.507 3.378a1.5 1.5 0 0 0 2.363-1.005L22.49 4.02a1.5 1.5 0 0 0-.546-1.514zM9.373 14.388l-.7 2.928-.972-3.234 7.957-6.173-7.285 6.479zm1.87 3.234.49-2.09 1.085.814-1.575 1.276zm6.48.943-5.51-4.132 8.97-7.977-3.46 12.109z" fill="white"/>
+      </svg>
+      👗 MixDM Moda Feminina — Entrar Grátis
+    </a>
+
+    <div class="divider">🛍️ Produtos em destaque</div>
+
+    <div class="produtos-info">
+      <span id="produtos-contador"></span>
+      <span id="pagina-info"></span>
+    </div>
+
+    <!-- =============================== -->
+    <!-- N8N: INJETE NOVOS PRODUTOS NO TOPO DE #produtos-lista -->
+    <div id="produtos-lista">
+
+      <a href="https://meli.la/1VCWKkN" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_662964-MLB109923064219_042026-P.webp" alt="Motorola edge 60 neo  12gb" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Motorola edge 60 neo  12gb</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2N1ify3" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_690159-MLA99542831560_122025-P.webp" alt="Smart Tv Aiwa 32 Android Hd Borda Ultrafina Hdr10 Dolby Áudio Aws-tv-32-bl-02-a" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Smart Tv Aiwa 32 Android Hd Borda Ultrafina Hdr10 Dolby Áudio Aws-tv-32-bl-02-a</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1YFbf7n" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_847927-MLB107566255549_022026-F-capa-protetor-de-colcho-elastico-queen-impermeavel-matelado.webp" alt="Capa Protetor De Colchão Elástico Queen Impermeável Matelado" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">Capa Protetor De Colchão Elástico Queen Impermeável Matelado</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1VCWKkN" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_662964-MLB109923064219_042026-P.webp" alt="Motorola edge 60 neo  12gb" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Motorola edge 60 neo  12gb</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1Av2Xqh" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_704656-MLA99928907217_112025-P.webp" alt="Secador De Cabelos Style Azul Tiffany 2000w Taiff Azul Azul-turquesa 127v" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Secador De Cabelos Style Azul Tiffany 2000w Taiff Azul Azul-turquesa 127v</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1ewDpzn" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_639637-MLA99869000423_112025-P.webp" alt="Smart Tv Aiwa 55 Android 4k Borda Ultrafina Dolby Vision&atmos Aws-tv-55-bl-01-a" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Smart Tv Aiwa 55 Android 4k Borda Ultrafina Dolby Vision&atmos Aws-tv-55-bl-01-a</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1fPLN9B" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_616257-MLA110160826626_042026-F.webp" alt="Smartphone Celular Realme 16 5g 256gb 12gb Ram Dual Sim Câmera De 50mp Lumacolor Image Espelho para Selfies Bateria 6550mah Impermeável Ip69 Pro 4200nit Amoled Preto" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Smartphone Celular Realme 16 5g 256gb 12gb Ram Dual Sim Câmera De 50mp Lumacolor Image Espelho para Selfies Bateria 6550mah Impermeável Ip69 Pro 4200nit Amoled Preto</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/25m2sqz" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_828922-MLB91520533559_092025-P-headphone-bluetooth-reduco-de-ruido-do-anc-com-microfone-f5.webp" alt="Headphone Bluetooth Redução De Ruído Do Anc Com Microfone F5" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Headphone Bluetooth Redução De Ruído Do Anc Com Microfone F5</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1iGfu5Z" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_662672-MLA109707268452_042026-P.webp" alt="Kit Gota De Colágeno Pele De Porcelana Kokeshi Hidratação" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">Kit Gota De Colágeno Pele De Porcelana Kokeshi Hidratação</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://s.shopee.com.br/4qCKa6rL3X" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mgrcyaih6k1zb6" alt="1/2/3 Peças Borrifador Azeite Pulverizador Premium Culinário Adequado Para Cozinhas 100ml Promoção" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">1/2/3 Peças Borrifador Azeite Pulverizador Premium Culinário Adequado Para Cozinhas 100ml Promoção</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2MFki4a" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_609142-MLA99983834123_112025-P.webp" alt="Relógio Champion Feminino Dourado Com Colar E Brincos, Mostrador Branco" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Relógio Champion Feminino Dourado Com Colar E Brincos, Mostrador Branco</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://s.shopee.com.br/4qCKa6rL3X" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mgrcyaih6k1zb6" alt="1/2/3 Peças Borrifador Azeite Pulverizador Premium Culinário Adequado Para Cozinhas 100ml Promoção" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">1/2/3 Peças Borrifador Azeite Pulverizador Premium Culinário Adequado Para Cozinhas 100ml Promoção</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2nMQg1S" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_689088-MLA99988196355_112025-P.webp" alt="Whey Isolate Protein Fuse 900g Dark Lab Sabor Baunilha" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Whey Isolate Protein Fuse 900g Dark Lab Sabor Baunilha</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2VXqwds" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_Q_NP_2X_675715-MLA99963700693_112025-P.webp" alt="Motorola Moto G15 256GB 12GB RAM" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Motorola Moto G15 256GB 12GB RAM</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1ZNoy8W" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_807882-MLB89806143762_082025-F-kit-2-camisa-polo-piquet-masculina-casual-premium.webp" alt="Polo Piquet Masculino Premium 2 Camisas" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">Polo Piquet Masculino Premium 2 Camisas</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2CfhM6W" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_921228-MLA107125434764_022026-F.webp" alt="Rishon Fitness Marmita 370ml" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">Rishon Fitness Marmita 370ml</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2E2Wcrg" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_865110-MLA91946343251_092025-F.webp" alt="Samsung Galaxy A17 5G 128GB 4GB RAM" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Samsung Galaxy A17 5G 128GB 4GB RAM</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1dx2u4c" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_885946-MLA99465163024_112025-F.webp" alt="Emma One Ortopédico Queen 10Anos Branco" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Emma One Ortopédico Queen 10Anos Branco</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1GtN4h5" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_822284-MLA99453292580_112025-F.webp" alt="WAP Flow Turbo 180W, 8 Pás" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">WAP Flow Turbo 180W, 8 Pás</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/23oyi5c" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821532-MLA87862556530_072025-F.webp" alt="Jovi Y19s 256GB" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Jovi Y19s 256GB</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/16HWVHZ" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_926282-MLA99390927476_112025-F.webp" alt="UGreen Cabo USB C 90° 3M Preto" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag">🔥 Oferta</span>
+          <span class="product-name">UGreen Cabo USB C 90° 3M Preto</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2DVzvkk" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_836965-MLA108103121007_032026-F.webp" alt="The Black Tools TB-12E Furadeira" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">The Black Tools TB-12E Furadeira</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/25APXDj" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_784513-MLA107202361084_032026-F.webp" alt="Samsung Galaxy Tab A11+ 5G 128GB" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Samsung Galaxy Tab A11+ 5G 128GB</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1fYCCcJ" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_722606-MLA107191675311_022026-F.webp" alt="Brastemp Bivolt Prateado Geladeira Inteligente 512L" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Brastemp Bivolt Prateado Geladeira Inteligente 512L</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2ER4PJR" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_638358-MLA99582065382_122025-F.webp" alt="Taiff Profissional Black Ion Secador De Cabelo 2000 Watts" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Taiff Profissional Black Ion Secador De Cabelo 2000 Watts</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2h9Y3DU" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_997328-MLA101890264991_122025-F.webp" alt="LG UHD 55AU801 4K 55 polegadas" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">LG UHD 55AU801 4K 55"</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1eCVDFi" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_650904-MLA100002714503_112025-F.webp" alt="Motorola Moto G15 256GB 12GB RAM AI 50MP Camera NV & NFC" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Motorola Moto G15 256GB 12GB RAM AI 50MP Camera NV & NFC</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/17NJy1v" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_827740-MLA99943629541_112025-F.webp" alt="Epson EcoTank L3250" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Epson EcoTank L3250</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/28VH9e6" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_986650-MLA96608230621_102025-F.webp" alt="Brastemp 14kg Smart Sensor White" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Brastemp 14kg Smart Sensor White</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2VmjpnW" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_713174-MLA108115296215_032026-F.webp" alt="Jovi Y21 256GB 8GB RAM" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Jovi Y21 256GB 8GB RAM</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/1miJ6E7" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_792472-MLA100025549859_122025-F.webp" alt="Samsung Galaxy A26 5G 256GB 8GB RAM" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Samsung Galaxy A26 5G 256GB 8GB RAM</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2CrCmhZ" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_695939-MLA95960340983_102025-F.webp" alt="Ugreen 65w Nexode Carregador Parede Preto" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Ugreen 65w Nexode Carregador Parede Preto</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2A3DpeV" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_705075-MLA99943632917_112025-F.webp" alt="Samsung Galaxy A36 5G 128GB 6GB RAM" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Samsung Galaxy A36 5G 128GB 6GB RAM</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2VXqwds" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_983786-MLA99479656582_112025-F.webp" alt="Motorola Moto g35 5G, 128GB" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Motorola Moto g35 5G, 128GB</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2aQe9FN" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_938709-MLA97122170511_112025-F.webp" alt="Infinix Note 50X 5G 8GB 256GB" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Infinix Note 50X 5G 8GB 256GB</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2241ZfV" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_687910-MLA92594999989_092025-F.webp" alt="Xiaomi Redmi 15C 4G 128GB" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Xiaomi Redmi 15C 4G 128GB</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/2EADcm9" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_805750-MLA101175903019_122025-F.webp" alt="Principia Kit de Rotina 120g" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">Principia Kit de Rotina 120g</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+      <a href="https://meli.la/19qiGe1" target="_blank" rel="noopener sponsored" class="product-btn">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_896332-MLA95400062457_102025-F.webp" alt="iPhone 17 256GB - Lavanda" class="product-thumb">
+        <div class="product-info">
+          <span class="product-tag"></span>
+          <span class="product-name">iPhone 17 256GB - Lavanda</span>
+          <span class="product-cta">Ver oferta <span class="arrow-icon">→</span></span>
+        </div>
+      </a>
+
+    </div>
+    <!-- =============================== -->
+
+    <div class="paginacao" id="paginacao">
+      <button class="btn-pag" id="btn-anterior" onclick="mudarPagina(-1)">← Anterior</button>
+      <div class="pag-paginas" id="pag-paginas"></div>
+      <button class="btn-pag" id="btn-proxima" onclick="mudarPagina(1)">Próxima →</button>
+    </div>
+
+  </div>
+
+  <div class="bio-footer">
+    © 2026 Mix Du Mix · Ofertas todo dia<br>
+    <a href="https://t.me/VitrineMixDuMix" target="_blank">t.me/VitrineMixDuMix</a>
+  </div>
+
+</div>
+
+<script>
+  const POR_PAGINA = 20;
+  let paginaAtual = 1;
+
+  function getProdutos() {
+    return Array.from(document.querySelectorAll('#produtos-lista .product-btn'));
+  }
+
+  function totalPaginas() {
+    return Math.max(1, Math.ceil(getProdutos().length / POR_PAGINA));
+  }
+
+  function renderPagina(pagina) {
+    const produtos = getProdutos();
+    const total = produtos.length;
+    const paginas = totalPaginas();
+    paginaAtual = Math.min(Math.max(1, pagina), paginas);
+
+    const inicio = (paginaAtual - 1) * POR_PAGINA;
+    const fim = inicio + POR_PAGINA;
+
+    produtos.forEach((p, i) => {
+      p.style.display = (i >= inicio && i < fim) ? 'flex' : 'none';
+    });
+
+    document.getElementById('produtos-contador').textContent =
+      total + (total === 1 ? ' produto' : ' produtos');
+    document.getElementById('pagina-info').textContent =
+      paginas > 1 ? 'Página ' + paginaAtual + ' de ' + paginas : '';
+
+    document.getElementById('btn-anterior').disabled = paginaAtual === 1;
+    document.getElementById('btn-proxima').disabled = paginaAtual === paginas;
+
+    const pagDiv = document.getElementById('pag-paginas');
+    pagDiv.innerHTML = '';
+    for (let i = 1; i <= paginas; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'pag-num' + (i === paginaAtual ? ' ativa' : '');
+      btn.textContent = i;
+      btn.onclick = () => renderPagina(i);
+      pagDiv.appendChild(btn);
+    }
+
+    const pag = document.getElementById('paginacao');
+    if (paginas > 1) {
+      pag.classList.add('visivel');
+    } else {
+      pag.classList.remove('visivel');
+    }
+
+    document.getElementById('produtos-lista').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function mudarPagina(delta) {
+    renderPagina(paginaAtual + delta);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => renderPagina(1));
+</script>
+
+</body>
+</html>
