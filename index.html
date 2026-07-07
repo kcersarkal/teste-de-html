@@ -957,6 +957,12 @@
 
   document.addEventListener('DOMContentLoaded', iniciar);
   window.addEventListener('hashchange', rotear);
+
+  window.addEventListener('pageshow', function(event) {
+  if (event.persisted) {
+    rotear();
+  }
+});
 </script>
 
 </body>
