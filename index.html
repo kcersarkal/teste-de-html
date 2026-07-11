@@ -480,7 +480,7 @@ function spotlightMarkup(p) {
         <div class="price-row">
           ${discountBadge(p.discount_percent)}
           <div>
-            <div class="price-row" style="margin-bottom:2px;"><span class="price-current">R$ <small>${fmtPrice(p.price_current)}</small></span></div>
+            <div class="price-row" style="margin-bottom:2px;"><span class="price-current">R$ ${fmtPrice(p.price_current)}</span></div>
             <span class="price-original">R$ ${fmtPrice(p.price_original)}</span>
           </div>
         </div>
@@ -562,7 +562,7 @@ function renderProduct(asin) {
         <h1 class="product-title">${p.title}</h1>
         <div class="product-price-block">
           <div class="price-row">
-            <span class="price-current">R$ <small>${fmtPrice(p.price_current)}</small></span>
+            <span class="price-current">R$ ${fmtPrice(p.price_current)}</span>
             ${priceNumber(p.price_original) !== null ? `<span class="price-original">De R$ ${fmtPrice(p.price_original)}</span>` : ""}
           </div>
           ${p.coupon_code ? `<div style="margin-top:10px;">${couponMarkup(p.coupon_code)}</div>` : ""}
