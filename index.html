@@ -578,34 +578,24 @@ function navigate(view, asin) {
   const navMatch = view === "produto" ? "home" : view;
   const navEl = document.querySelector(`.header-nav a[data-nav-view="${navMatch}"]`);
   if (navEl) navEl.classList.add("current");
-
   if (view === "produto") {
     renderProduct(asin);
-    window.location.hash = `produto/${asin}`;
     document.title = "Oferta — Mix Du Mix Ofertas";
   } else {
-    window.location.hash = view === "home" ? "" : view;
     document.title = view === "home" ? "Mix Du Mix Ofertas — As melhores ofertas da Amazon" : `${view[0].toUpperCase()+view.slice(1)} — Mix Du Mix Ofertas`;
   }
   window.scrollTo({ top: 0, behavior: "instant" });
 }
-
-function routeFromHash() {
-  const hash = window.location.hash.replace("#", "");
-  if (hash.startsWith("produto/")) {
-    navigate("produto", hash.split("/")[1]);
-  } else if (["sobre","contato"].includes(hash)) {
-    navigate(hash);
-  } else {
-    navigate("home");
-  }
+function routeFromInitialUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const produtoAsin = params.get("produto");
+  if (produtoAsin) { navigate("produto", produtoAsin); return; }
+  navigate("home");
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   renderHome();
-  routeFromHash();
+  routeFromInitialUrl();
 });
-window.addEventListener("hashchange", routeFromHash);
 </script>
 </body>
 </html>
