@@ -12080,6 +12080,12 @@ function renderProduct(asin) {
 }
 
 function shareWhatsApp(asin) {
+    const url = window.location.origin + window.location.pathname + '?produto=' + asin;
+    navigator.clipboard.writeText(url).then(() => {
+        alert('Link copiado!');
+    });
+}
+
   const p = getActiveProducts().find(item => item.asin === asin);
   if (!p) return;
   const productUrl = `${window.location.origin}${window.location.pathname}?v=${Date.now()}&produto=${p.asin}`;
